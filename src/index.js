@@ -12,7 +12,7 @@ root.render(
   <Router>
     <Header />
     <Routes>
-    <Route path='/' element={<App />} />
+    <Route path='/' element={<App onLoad={window.localStorage.setItem('menuBtn','true')} />} />
     <Route path='/cars' element={<CariPage />} />
     </Routes>
     <Footer />

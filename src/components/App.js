@@ -6,8 +6,7 @@ import CTA from './CTA';
 import FAQ from './FAQ';
 
 function App() {
-  console.log(window.localStorage)
-  window.localStorage.clear()
+  
   return (
     <>
     <Intro />

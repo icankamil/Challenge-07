@@ -4,11 +4,11 @@ import React from 'react';
 function Header(){
 
     function disappear(){
-        window.localStorage.setItem('mulaiBtn',false)
+        window.localStorage.setItem('mulaiBtn','false')
     }
 
     function reappear(){
-        window.localStorage.clear()
+        window.localStorage.setItem('mulaiBtn','true')
     }
 
 
@@ -58,7 +58,7 @@ return (
   <div className="isi">
   <h1><b>Sewa & Rental Mobil Terbaik di kawasan Bandung</b></h1>
   <p>Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
-  {window.localStorage.length === 0 && <a href="/cars" className=" btn btn-color-theme pl-3 pr-3" id="mulai-sewa" onClick={disappear} >Mulai Sewa Mobil</a>}
+  {window.localStorage.getItem('mulaiBtn') === 'true' && <a href="/cars" className=" btn btn-color-theme pl-3 pr-3" id="mulai-sewa" onClick={disappear} >Mulai Sewa Mobil</a>}
   </div>
   </div>
   <div className="col-md-6 order-1">
