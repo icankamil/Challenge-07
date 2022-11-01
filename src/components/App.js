@@ -6,7 +6,6 @@ import CTA from "./CTA";
 import FAQ from "./FAQ";
 
 function App() {
-  window.localStorage.setItem("mulaiBtn", "true");
   return (
     <>
       <Intro />

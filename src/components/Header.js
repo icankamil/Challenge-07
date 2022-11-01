@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Header() {
   const [initialBtn, setInitialBtn] = useState(
@@ -11,6 +11,10 @@ function Header() {
   const reappear = () => {
     setInitialBtn(window.localStorage.setItem("mulaiBtn", "true"));
   };
+
+  // useEffect(() => {
+  //   return window.localStorage.setItem("mulaiBtn", "true");
+  // }, []);
 
   return (
     <header className="w-full">
