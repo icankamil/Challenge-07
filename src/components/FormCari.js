@@ -73,8 +73,7 @@ const FormCari = () => {
                 onChange={handleInput}
               >
                 <option value="" hidden>
-                  {" "}
-                  Pilih Tipe Driver{" "}
+                  Pilih Tipe Driver
                 </option>
                 <option value={1}>Dengan Sopir</option>
                 <option value={2}>Tanpa Sopir(Lepas Kunci)</option>
