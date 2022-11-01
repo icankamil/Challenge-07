@@ -14,8 +14,18 @@ const FormCari = ()=>{
     const[isLoad,setIsLoad]=useState(false)
 
     const [cars,setCars] = useState([]);
-    useEffect( ()=>{
-       fetchCars();
+    useEffect(()=>{
+      setIsLoad(true)
+      setIsFocus(true)
+      fetch('https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json')
+      .then(response=>response.json())
+      .then(cars => {
+          setCars(
+          cars.filter(car=>car))
+          setIsLoad(false)
+          setIsFocus(false)
+      })
+      .catch(err => console.log(new Error(err)))
     },[])
 
     const fetchCars = async ()=>{

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Intro(){
+function Intro(props){
     return (
         <div className="container">
         <div id="ourservices" className="row">

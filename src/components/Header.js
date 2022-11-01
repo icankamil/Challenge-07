@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
 function Header(){
+  const [initialBtn,setInitialBtn] = useState(window.localStorage.getItem('mulaiBtn'))
 
-    function disappear(){
-        window.localStorage.setItem('mulaiBtn','false')
-    }
-
-    function reappear(){
-        window.localStorage.setItem('mulaiBtn','true')
-    }
-
+  
+  const disappear = ()=>{
+    setInitialBtn(window.localStorage.setItem('mulaiBtn','false'))
+  }
+  const reappear = ()=>{
+    setInitialBtn(window.localStorage.setItem('mulaiBtn','true'))
+  }
+  console.log(initialBtn)
 
 return (
 <header className= "w-full">
 <div className="container">
 <nav className="navbar navbar-expand-lg navbar-light">
   <div className="container-fluid">
-<div className="navbar-brand"><a href="/" style={{textDecoration:'none', color:'black'}} onClick={reappear}> Binar Car Rental </a></div>
+<div className="navbar-brand"><a href="/" style={{textDecoration:'none', color:'black'}} onClick={reappear} > Binar Car Rental </a></div>
 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
   <span className="navbar-toggler-icon"></span>
     </button>
@@ -58,7 +59,7 @@ return (
   <div className="isi">
   <h1><b>Sewa & Rental Mobil Terbaik di kawasan Bandung</b></h1>
   <p>Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
-  {window.localStorage.getItem('mulaiBtn') === 'true' && <a href="/cars" className=" btn btn-color-theme pl-3 pr-3" id="mulai-sewa" onClick={disappear} >Mulai Sewa Mobil</a>}
+  {initialBtn === 'true' && <a href="/cars" className=" btn btn-color-theme pl-3 pr-3" id="mulai-sewa" onClick={disappear} >Mulai Sewa Mobil</a>}
   </div>
   </div>
   <div className="col-md-6 order-1">
