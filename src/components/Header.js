@@ -11,7 +11,6 @@ function Header(){
   const reappear = ()=>{
     setInitialBtn(window.localStorage.setItem('mulaiBtn','true'))
   }
-  console.log(initialBtn)
 
 return (
 <header className= "w-full">
