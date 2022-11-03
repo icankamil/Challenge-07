@@ -1,16 +1,16 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { togglerActions } from "../store/button";
 
 function Header() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const toggle = useSelector((state) => state.button.showButton);
   const toggleButtonHandler = () => {
     dispatch(togglerActions.toggleButton());
   };
-
   return (
     <>
       <header className="w-full">
@@ -108,7 +108,7 @@ function Header() {
                     kualitas terbaik dengan harga terjangkau. Selalu siap
                     melayani kebutuhanmu untuk sewa mobil selama 24 jam.
                   </p>
-                  {toggle === true && (
+                  {toggle && location.pathname === "/" && (
                     <Link
                       to={`/cars`}
                       className=" btn btn-color-theme pl-3 pr-3"

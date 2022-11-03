@@ -42,6 +42,12 @@ const FormCari = () => {
         );
         setIsLoad(false);
         setIsFocus(false);
+        setState({
+          tipe_driver: "",
+          tanggal_tersedia: "",
+          waktu_jemput: "",
+          jumlah_penumpang: "",
+        });
       })
       .catch((err) => console.log(new Error(err)));
   };
@@ -114,18 +120,15 @@ const FormCari = () => {
                 onChange={handleInput}
               />
             </div>
-            <div className="col-sm">
+            <div className="col-auto">
               <div className="search-button">
                 <button
                   type="submit"
                   id="load-btn"
-                  className="btn btn-cari"
+                  className="btn btn-cari float-end"
                   onClick={fetchCars}
                 >
                   Cari Mobil
-                </button>
-                <button className="btn btn-cari" id="clear-btn" type="reset">
-                  Edit
                 </button>
               </div>
             </div>
