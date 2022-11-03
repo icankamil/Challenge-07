@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "./Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { togglerActions } from "../store/button";
 
 function Header() {
-  const [initialBtn, setInitialBtn] = useState("true");
-  const disappear = () => {
-    setInitialBtn("false");
-  };
-  const reappear = () => {
-    setInitialBtn("true");
+  const dispatch = useDispatch();
+  const toggle = useSelector((state) => state.button.showButton);
+  const toggleButtonHandler = () => {
+    dispatch(togglerActions.toggleButton());
   };
 
   return (
@@ -21,7 +21,7 @@ function Header() {
                 <Link
                   to={`/`}
                   style={{ textDecoration: "none", color: "black" }}
-                  onClick={reappear}
+                  onClick={toggleButtonHandler}
                 >
                   {" "}
                   Binar Car Rental{" "}
@@ -108,12 +108,12 @@ function Header() {
                     kualitas terbaik dengan harga terjangkau. Selalu siap
                     melayani kebutuhanmu untuk sewa mobil selama 24 jam.
                   </p>
-                  {initialBtn === "true" && (
+                  {toggle === true && (
                     <Link
                       to={`/cars`}
                       className=" btn btn-color-theme pl-3 pr-3"
                       id="mulai-sewa"
-                      onClick={disappear}
+                      onClick={toggleButtonHandler}
                     >
                       Mulai Sewa Mobil
                     </Link>

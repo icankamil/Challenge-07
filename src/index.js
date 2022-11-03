@@ -5,11 +5,17 @@ import Header from "./components/Header";
 import CariPage from "./components/CariPage";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Header />,
+    element: (
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    ),
     children: [
       { path: "/", element: <App /> },
       {
