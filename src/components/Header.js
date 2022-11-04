@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { togglerActions } from "../store/button";
+import GoogleComponent from "react-google-login";
+import { gapi } from "gapi-script";
 
 function Header() {
+  const responseGoogle = (response) => {
+    window.localStorage.setItem("accessToken", response.accessToken);
+  };
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "738292671835-u2m4qjgblq5p5ce3kb2okfcdl672gvo5.apps.googleusercontent.com",
+        scope: "",
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  }, []);
+
   const location = useLocation();
   const dispatch = useDispatch();
   const toggle = useSelector((state) => state.button.showButton);
@@ -119,6 +137,14 @@ function Header() {
                     </Link>
                   )}
                 </div>
+                <GoogleComponent
+                  clientId="738292671835-u2m4qjgblq5p5ce3kb2okfcdl672gvo5.apps.googleusercontent.com"
+                  buttonText="Login dengan Google"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                  className="mt-3"
+                />
               </div>
               <div className="col-md-6 order-1">
                 <div className="gambar">
